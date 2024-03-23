@@ -71,8 +71,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 		    HDC hdc = BeginPaint(hwnd, &ps);
 		    
 		    // Draw the first circle
-		    DrawCircle(hdc, circleX1, circleY1, circleRadius1, 255, 255, 255);
-		
+		    if (!isExplosion) {
+		    	DrawCircle(hdc, circleX1, circleY1, circleRadius1, 255, 255, 255);
+			}
+		    
 		    // Draw the second circle
 		    DrawCircle(hdc, circleX2, circleY2, circleRadius2, 0, 0, 0);
  
@@ -88,7 +90,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 		    	isExplosion = true;
 		        
 		        // Draw Explosion
-		        DrawExplosion(hdc, explosionX, explosionY, explosionRadius); // Draw explosion
+		        DrawExplosion(hdc, explosionX, explosionY, explosionRadius);
 		        
 		    }
 		    

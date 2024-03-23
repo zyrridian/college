@@ -106,18 +106,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
         case WM_KEYDOWN: {
             // Handle arrow key inputs
             switch (wParam) {
-            case VK_UP:
-                MoveSecondCircleVertically(-10); // Move second circle up
-                break;
-            case VK_DOWN:
-                MoveSecondCircleVertically(10); // Move second circle down
-                break;
-            case VK_LEFT:
-                MoveSecondCircleHorizontally(-30); // Move second circle to the left
-                break;
-            case VK_RIGHT:
-                MoveSecondCircleHorizontally(30); // Move second circle to the right
-                break;
+	            case VK_UP:
+	                MoveSecondCircleVertically(-10); // Move second circle up
+	                break;
+	            case VK_DOWN:
+	                MoveSecondCircleVertically(10); // Move second circle down
+	                break;
+	            case VK_LEFT:
+	                MoveSecondCircleHorizontally(-30); // Move second circle to the left
+	                break;
+	            case VK_RIGHT:
+	                MoveSecondCircleHorizontally(30); // Move second circle to the right
+	                break;
             }
 
             // Force a repaint to update the circles

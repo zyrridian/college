@@ -5,70 +5,71 @@ import java.util.Locale;
 import java.util.Scanner;
 
 /**
- * UTS Pemrograman Java
+ * Mid-Semester Java Exam
  * Rezky Aditia Fauzan (2241018)
  */
 public class App {
 
-    static String golongan;
-    static double gaji, totalGaji;
-    static double gajiA = 5000000;
-    static double gajiB = 6500000;
-    static double gajiC = 9500000;
-    static boolean inputSalah = false;
+    static String grade;
+    static double salary, totalSalary;
+    static double salaryA = 500;
+    static double salaryB = 650;
+    static double salaryC = 950;
+    static boolean invalidInput = false;
     
     public static void main( String[] args ) {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println( "======= PROGRAM PERUSAHAAN =======" );
-        System.out.print( ">> Masukkan Golongan Karyawan (A, B, C): " );
-        golongan = input.nextLine().trim().toLowerCase();
+        System.out.println( "======= COMPANY PROGRAM =======\n" );
+        System.out.print( ">> Enter Employee Grade (A, B, C): " );
+        grade = input.nextLine().trim().toLowerCase();
 
-        if (golongan.equals("a")) {
-            gaji = gajiA;
-        } else if (golongan.equals("b")) {
-            gaji = gajiB;
-        } else if (golongan.equals("c")) {
-            gaji = gajiC;
+        if (grade.equals("a")) {
+            salary = salaryA;
+        } else if (grade.equals("b")) {
+            salary = salaryB;
+        } else if (grade.equals("c")) {
+            salary = salaryC;
         } else {
-            inputSalah = true;
-            System.out.println(">> Golongan tidak valid!");   
+            invalidInput = true;
+            System.out.println(">> Invalid Grade!");   
         }
 
-        if (!inputSalah) {
+        if (!invalidInput) {
 
-            inputSalah = false;
-            System.out.print(">> Masukkan Jam Lembur (min. 1 jam): ");
+            invalidInput = false;
+            System.out.print(">> Enter Overtime Hours (min. 1 hour): ");
 
             try {
 
-                int lembur = Integer.parseInt(input.nextLine());
+                int overtimeHours = Integer.parseInt(input.nextLine());
 
-                if (lembur == 1) {
-                    totalGaji = gaji + (gaji * 0.3);
-                } else if (lembur == 2) {
-                    totalGaji = gaji + (gaji * 0.32);
-                } else if (lembur == 3) {
-                    totalGaji = gaji + (gaji * 0.34);
-                } else if (lembur == 4) {
-                    totalGaji = gaji + (gaji * 0.36);
-                } else if (lembur >= 5) {
-                    totalGaji = gaji + (gaji * 0.38);
+                if (overtimeHours == 1) {
+                    totalSalary = salary + (salary * 0.3);
+                } else if (overtimeHours == 2) {
+                    totalSalary = salary + (salary * 0.32);
+                } else if (overtimeHours == 3) {
+                    totalSalary = salary + (salary * 0.34);
+                } else if (overtimeHours == 4) {
+                    totalSalary = salary + (salary * 0.36);
+                } else if (overtimeHours >= 5) {
+                    totalSalary = salary + (salary * 0.38);
                 } else {
-                    inputSalah = true;
-                    System.out.println(">> Golongan tidak valid!");   
+                    invalidInput = true;
+                    System.out.println(">> Invalid Grade!");   
                 }
 
-                if (!inputSalah) {
-                    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("id", "ID"));
-                    String formatRupiah = numberFormat.format(totalGaji);
-                    System.out.println(">> Jumlah penghasilan: " + formatRupiah);
+                if (!invalidInput) {
+                    @SuppressWarnings("deprecation")
+                    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
+                    String formattedSalary = numberFormat.format(totalSalary);
+                    System.out.println(">> Total Income: " + formattedSalary);
                 }
 
             } catch (NumberFormatException e) {
-                inputSalah = true;
-                System.out.println(">> Jam lembur tidak valid!");
+                invalidInput = true;
+                System.out.println(">> Invalid Overtime Hours!");
             } finally {
                 input.close();
             }

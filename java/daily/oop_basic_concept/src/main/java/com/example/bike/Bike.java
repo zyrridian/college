@@ -2,7 +2,7 @@ package com.example.bike;
 
 public class Bike {
     
-    int gear;
+    private int gear;
 
     // method (mutator) with parameter
     void setGear(int gearIncrement) {
